@@ -1,13 +1,14 @@
 import dotenv from 'dotenv'; 
+dotenv.config();
 import express from 'express';
 import routes from './routes/auth.route.js';
 const app = express();
-dotenv.config();
+
 import './config/db.js';
 
 
 
-app.use(express.json());
+app.use(express.json()); // for parsing application/json
 
 
 
