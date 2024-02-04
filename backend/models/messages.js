@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const messageSchema = new mongoose.Schema({
     participant1: {
         type: mongoose.Schema.ObjectId,
