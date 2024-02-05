@@ -23,4 +23,19 @@ const sendmessage = async (req, res) => {
     }
     
 }
-export { sendmessage };
+const getmessages = async (req, res) => {   
+    const id = req.params.id;
+    const senderid = req.user;
+    try{
+        const con = await Conversation.findOne({participants:{$all:[senderid,id]}}).populate('messages');
+        if(con === null){
+            res.status(200).json({ messages: [] });
+        }else{
+            res.status(200).json({ messages: con.messages });
+        }
+    }catch(e){
+        res.status(500).json({ message: e});
+    }
+    
+}
+export { sendmessage,getmessages };

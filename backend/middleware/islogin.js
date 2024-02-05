@@ -12,8 +12,9 @@ const isLogin = (req, res, next) => {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             
             // If the token is valid, save the user credentials in the req object
+  
             req.user = decoded.userid;
-            
+            console.log(decoded.userid)
             next(); // Call the next middleware or route handler
         } catch (error) {
             // If the token is invalid or expired, send an error response

@@ -4,6 +4,7 @@ import express from 'express';
 import routes from './routes/auth.route.js';
 import messageroutes from './routes/messege.route.js';
 import cookieParser from 'cookie-parser';
+import userroutes from './routes/userroutes.js';    
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.get('/', (req, res) => {res.status(200).send('Helaaaalo World')});
 app.use('/api/auth',routes)
 app.use('/api/messages',messageroutes)
+app.use('/users',userroutes)
 
 
 app.listen(process.env.PORT, () => {console.log('Server is running '  + process.env.PORT)});            
