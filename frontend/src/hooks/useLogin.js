@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
-
+import config from "../../config/config";	
 const useLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuthUser } = useAuthContext();
@@ -11,7 +11,10 @@ const useLogin = () => {
 		if (!success) return;
 		setLoading(true);
 		try {
-			const res = await fetch("/api/auth/login", {
+			// eslint-disable-next-line no-unused-vars
+			const uri = config.apiUrl+"api/auth/login"
+			console.log(uri)
+			const res = await fetch(uri, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),

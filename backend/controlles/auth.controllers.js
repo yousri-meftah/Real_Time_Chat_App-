@@ -7,8 +7,9 @@ dotenv.config();
 
 
 function login(req, res) {
-    const { email, password } = req.body;
-    User.findOne({ email
+    const { username, password } = req.body;
+    console.log(username);
+    User.findOne({ username
     })
         .then((user) => {
             if (!user) return res.status(400).send('User not found');
